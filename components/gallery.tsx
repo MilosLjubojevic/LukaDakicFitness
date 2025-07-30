@@ -1,7 +1,12 @@
+import Image from "next/image"
+import BackExercise from "@/public/BackExercise.jpg"
+import SquatExercise from "@/public/SquatExercise.jpg"
+
+
 export function Gallery() {
   const images = [
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
+    BackExercise,
+   SquatExercise,
     "/placeholder.svg?height=300&width=400",
     "/placeholder.svg?height=300&width=400",
     "/placeholder.svg?height=300&width=400",
@@ -24,10 +29,12 @@ export function Gallery() {
               key={index}
               className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
-              <img
+              <Image
+                width={400}
+                height={300}
                 src={image || "/placeholder.svg"}
                 alt={`Gallery image ${index + 1}`}
-                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full max-h-96 object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           ))}
