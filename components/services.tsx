@@ -6,42 +6,63 @@ export function Services() {
   const services = [
     {
       icon: Dumbbell,
-      title: "Personal Training",
-      description: "One-on-one training sessions tailored to your specific goals and fitness level.",
-      price: "$80/session",
-      features: ["Customized workout plans", "Form correction", "Progress tracking", "Flexible scheduling"],
+      title: "Personalni Trening",
+      description: "Individualni treninzi prilagođeni vašim ciljevima i nivou fizičke spremnosti.",
+      price: "80 KM / sesija",
+      features: [
+        "Personalizovan plan treninga",
+        "Korekcija forme",
+        "Praćenje napretka",
+        "Fleksibilno zakazivanje",
+      ],
     },
     {
       icon: Users,
-      title: "Group Training",
-      description: "Small group sessions that combine motivation with personalized attention.",
-      price: "$40/session",
-      features: ["2-4 people max", "Team motivation", "Cost effective", "Fun atmosphere"],
+      title: "Grupni Trening",
+      description: "Trening u malim grupama koji kombinuje motivaciju i individualni pristup.",
+      price: "40 KM / sesija",
+      features: [
+        "2-4 osobe maksimalno",
+        "Grupna motivacija",
+        "Isplativije opcije",
+        "Zabavna atmosfera",
+      ],
     },
     {
       icon: Utensils,
-      title: "Nutrition Coaching",
-      description: "Personalized meal plans and nutrition guidance to fuel your fitness journey.",
-      price: "$60/session",
-      features: ["Custom meal plans", "Macro tracking", "Supplement advice", "Lifestyle integration"],
+      title: "Nutricionističko Savetovanje",
+      description: "Plan ishrane i saveti prilagođeni vašim ciljevima i životnom stilu.",
+      price: "60 KM / sesija",
+      features: [
+        "Prilagođeni jelovnici",
+        "Praćenje makronutrijenata",
+        "Saveti o suplementima",
+        "Usklađivanje sa stilom života",
+      ],
     },
     {
       icon: Heart,
       title: "Wellness Coaching",
-      description: "Holistic approach to health including stress management and lifestyle optimization.",
-      price: "$70/session",
-      features: ["Stress management", "Sleep optimization", "Habit formation", "Mental wellness"],
+      description: "Holistički pristup zdravlju sa fokusom na mentalni balans i navike.",
+      price: "70 KM / sesija",
+      features: [
+        "Upravljanje stresom",
+        "Optimizacija sna",
+        "Formiranje zdravih navika",
+        "Mentalna stabilnost",
+      ],
     },
   ]
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="usluge" className="py-20 bg-gray-50" role="region" aria-labelledby="naslov-usluga">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Services Designed for Your Success</h2>
+          <h2 id="naslov-usluga" className="text-4xl font-bold text-gray-900 mb-4">
+            Usluge Prilagođene Vašem Uspehu
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose from our comprehensive range of fitness and wellness services, all designed to help you achieve your
-            health and fitness goals.
+            Odaberite neku od naših fitnes i wellness usluga osmišljenih tako da vam pomognu da postignete svoje ciljeve zdravlja i kondicije.
           </p>
         </div>
 
@@ -60,12 +81,12 @@ export function Services() {
                 <ul className="space-y-2 text-sm text-gray-600">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <span className="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                      <span className="w-2 h-2 bg-green-600 rounded-full mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Book Now</Button>
+                <Button className="w-full bg-green-600 hover:bg-green-700">Zakaži Termin</Button>
               </CardContent>
             </Card>
           ))}

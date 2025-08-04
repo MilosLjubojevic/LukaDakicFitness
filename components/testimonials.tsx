@@ -4,43 +4,44 @@ import { Card, CardContent } from "@/components/ui/card"
 export function Testimonials() {
   const testimonials = [
     {
-      name: "Sarah Mitchell",
-      role: "Marketing Manager",
+      name: "Sara Mičel",
+      role: "Menadžer Marketinga",
       image: "/placeholder.svg?height=80&width=80",
       rating: 5,
-      text: "Alex transformed not just my body, but my entire relationship with fitness. I've lost 30 pounds and gained so much confidence. His personalized approach made all the difference!",
+      text: "Luka je promenio ne samo moje telo, već i moj odnos prema fitnesu. Izgubila sam 15 kg i stekla samopouzdanje. Njegov personalizovani pristup je sve promenio!",
     },
     {
-      name: "Mike Rodriguez",
-      role: "Software Engineer",
+      name: "Mikro Rodrigez",
+      role: "Softverski Inženjer",
       image: "/placeholder.svg?height=80&width=80",
       rating: 5,
-      text: "As someone who spent years behind a desk, I thought I was beyond help. Alex proved me wrong! His patient guidance helped me build strength I never thought possible.",
+      text: "Godinama sam sedeo za računarom i mislio da nema pomoći. Luka mi je dokazao suprotno! Uz njegovu strpljivu podršku postigao sam snagu za koju nisam znao da imam.",
     },
     {
-      name: "Emily Chen",
-      role: "Teacher",
+      name: "Emili Čen",
+      role: "Nastavnica",
       image: "/placeholder.svg?height=80&width=80",
       rating: 5,
-      text: "The nutrition coaching was a game-changer. Alex helped me understand how to fuel my body properly, and the results speak for themselves. I feel amazing!",
+      text: "Savetovanje o ishrani je bilo ključ uspeha. Luka me naučio kako da pravilno hranim svoje telo – rezultati su neverovatni. Osećam se odlično!",
     },
     {
-      name: "David Thompson",
-      role: "Retired Veteran",
+      name: "David Baja",
+      role: "Penzionisani Veteran",
       image: "/placeholder.svg?height=80&width=80",
       rating: 5,
-      text: "After my military service, I struggled to maintain my fitness. Alex's program brought back my discipline and strength. Couldn't be happier with the results.",
+      text: "Nakon služenja vojske, bilo mi je teško da održim kondiciju. Lukin program mi je vratio disciplinu i snagu. Prezadovoljan sam rezultatima.",
     },
   ]
 
   return (
-    <section id="testimonials" className="py-20 bg-lime-50">
+    <section id="iskustva" className="py-20 bg-lime-50" role="region" aria-labelledby="naslov-iskustva">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Success Stories from Real Clients</h2>
+          <h2 id="naslov-iskustva" className="text-4xl font-bold text-gray-900 mb-4">
+            Priče o Uspehu Naših Klijenata
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about their transformation journey with
-            FitCoach Pro.
+            Ne morate nam verovati na reč. Pogledajte šta naši klijenti kažu o svojim transformacijama sa FitCoach Pro.
           </p>
         </div>
 
@@ -48,7 +49,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="h-full">
               <CardContent className="p-6 space-y-4">
-                <div className="flex">
+                <div className="flex" aria-label={`Ocena ${testimonial.rating} zvezdica`}>
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                   ))}
@@ -56,8 +57,8 @@ export function Testimonials() {
                 <p className="text-gray-600 italic">"{testimonial.text}"</p>
                 <div className="flex items-center space-x-3">
                   <img
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={testimonial.name}
+                    src={testimonial.image}
+                    alt={`Fotografija korisnika ${testimonial.name}`}
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>

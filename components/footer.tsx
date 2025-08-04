@@ -2,87 +2,128 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-12">
+    <footer
+      className="bg-gray-800 text-white py-12"
+      role="contentinfo"
+      aria-label="Podnožje sajta"
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand and Social */}
           <div className="space-y-4">
             <div className="text-2xl font-bold text-green-600">FitCoach Pro</div>
             <p className="text-gray-400">
-              Transforming lives through personalized fitness training and nutrition coaching.
+              Menjamo živote kroz personalizovane treninge i savete o ishrani.
             </p>
-            <div className="flex space-x-4">
-              <Facebook className="w-5 h-5 text-gray-400 hover:text-green-600 cursor-pointer transition-colors" />
-              <Instagram className="w-5 h-5 text-gray-400 hover:text-green-600 cursor-pointer transition-colors" />
-              <Twitter className="w-5 h-5 text-gray-400 hover:text-green-600 cursor-pointer transition-colors" />
-              <Youtube className="w-5 h-5 text-gray-400 hover:text-green-600 cursor-pointer transition-colors" />
+            <div className="flex space-x-4" aria-label="Društvene mreže">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="hover:text-green-600 transition-colors"
+              >
+                <Facebook className="w-5 h-5 text-gray-400 cursor-pointer" />
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="hover:text-green-600 transition-colors"
+              >
+                <Instagram className="w-5 h-5 text-gray-400 cursor-pointer" />
+              </a>
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="hover:text-green-600 transition-colors"
+              >
+                <Twitter className="w-5 h-5 text-gray-400 cursor-pointer" />
+              </a>
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="hover:text-green-600 transition-colors"
+              >
+                <Youtube className="w-5 h-5 text-gray-400 cursor-pointer" />
+              </a>
             </div>
           </div>
 
+          {/* Services */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Services</h3>
+            <h3 className="text-lg font-semibold">Usluge</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <a href="#" className="hover:text-green-600 transition-colors">
-                  Personal Training
+                  Individualni treninzi
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-green-600 transition-colors">
-                  Group Training
+                  Grupni treninzi
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-green-600 transition-colors">
-                  Nutrition Coaching
+                  Saveti o ishrani
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-green-600 transition-colors">
-                  Wellness Coaching
+                  Mentalni wellness
                 </a>
               </li>
             </ul>
           </div>
 
+          {/* Navigation */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold">Brzi Linkovi</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <a href="#about" className="hover:text-green-600 transition-colors">
-                  About
+                  O meni
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-green-600 transition-colors">
-                  Services
+                  Usluge
                 </a>
               </li>
               <li>
                 <a href="#testimonials" className="hover:text-green-600 transition-colors">
-                  Testimonials
+                  Utisci
                 </a>
               </li>
               <li>
                 <a href="#contact" className="hover:text-green-600 transition-colors">
-                  Contact
+                  Kontakt
                 </a>
               </li>
             </ul>
           </div>
 
+          {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Info</h3>
+            <h3 className="text-lg font-semibold">Kontakt</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>123 Fitness Street</li>
-              <li>City, State 12345</li>
-              <li>(555) 123-4567</li>
-              <li>alex@fitcoachpro.com</li>
+              <li>Ulica Fitnesa 123</li>
+              <li>Beograd, Srbija</li>
+              <li>+381 64 123 4567</li>
+              <li>luka@fitcoachpro.rs</li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 FitCoach Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>
+            &copy; 2024 FitCoach Pro. Sva prava zadržana. |{" "}
+            <a href="#" className="hover:text-green-600">
+              Politika privatnosti
+            </a>{" "}
+            |{" "}
+            <a href="#" className="hover:text-green-600">
+              Uslovi korišćenja
+            </a>
+          </p>
         </div>
       </div>
     </footer>
