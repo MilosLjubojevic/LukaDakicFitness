@@ -1,7 +1,9 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import { Play, Star } from "lucide-react"
 
 export function Hero() {
+
   return (
     <section
       id="home"
@@ -38,6 +40,10 @@ export function Hero() {
                 className="bg-green-900 hover:bg-green-700 text-lg px-8 py-3"
                 aria-label="Započni svoj fitnes put"
                 title="Započni svoj fitnes put sada"
+                 onClick={() => {
+    const el = document.getElementById("usluge");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }}
               >
                 Započni svoj put
               </Button>

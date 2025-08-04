@@ -16,13 +16,7 @@ export function Footer() {
               Menjamo živote kroz personalizovane treninge i savete o ishrani.
             </p>
             <div className="flex space-x-4" aria-label="Društvene mreže">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="hover:text-green-600 transition-colors"
-              >
-                <Facebook className="w-5 h-5 text-gray-400 cursor-pointer" />
-              </a>
+             
               <a
                 href="#"
                 aria-label="Instagram"
@@ -30,20 +24,8 @@ export function Footer() {
               >
                 <Instagram className="w-5 h-5 text-gray-400 cursor-pointer" />
               </a>
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="hover:text-green-600 transition-colors"
-              >
-                <Twitter className="w-5 h-5 text-gray-400 cursor-pointer" />
-              </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="hover:text-green-600 transition-colors"
-              >
-                <Youtube className="w-5 h-5 text-gray-400 cursor-pointer" />
-              </a>
+             
+            
             </div>
           </div>
 

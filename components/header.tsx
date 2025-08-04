@@ -38,6 +38,10 @@ export function Header() {
             className="hidden md:block bg-green-900 hover:bg-green-700"
             aria-label="Zakaži trening"
             title="Zakaži besplatan trening"
+            onClick={() => {
+              const el = document.getElementById("usluge");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
           >
             Zakaži trening
           </Button>

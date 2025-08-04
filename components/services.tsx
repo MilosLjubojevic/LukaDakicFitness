@@ -1,3 +1,5 @@
+'use client'
+
 import { Dumbbell, Heart, Users, Utensils } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -8,7 +10,7 @@ export function Services() {
       icon: Dumbbell,
       title: "Personalni Trening",
       description: "Individualni treninzi prilagođeni vašim ciljevima i nivou fizičke spremnosti.",
-      price: "80 KM / sesija",
+      price: "20 € / sesija",
       features: [
         "Personalizovan plan treninga",
         "Korekcija forme",
@@ -18,9 +20,9 @@ export function Services() {
     },
     {
       icon: Users,
-      title: "Grupni Trening",
+      title: "Polupersonalni Trening",
       description: "Trening u malim grupama koji kombinuje motivaciju i individualni pristup.",
-      price: "40 KM / sesija",
+      price: "15 € / po osobi",
       features: [
         "2-4 osobe maksimalno",
         "Grupna motivacija",
@@ -31,25 +33,13 @@ export function Services() {
     {
       icon: Utensils,
       title: "Nutricionističko Savetovanje",
-      description: "Plan ishrane i saveti prilagođeni vašim ciljevima i životnom stilu.",
-      price: "60 KM / sesija",
+      description: "Plan ishrane i saveti prilagođeni vašim ciljevima i vašem životnom stilu.",
+      price: "50 € / dvomesečni plan",
       features: [
         "Prilagođeni jelovnici",
         "Praćenje makronutrijenata",
         "Saveti o suplementima",
         "Usklađivanje sa stilom života",
-      ],
-    },
-    {
-      icon: Heart,
-      title: "Wellness Coaching",
-      description: "Holistički pristup zdravlju sa fokusom na mentalni balans i navike.",
-      price: "70 KM / sesija",
-      features: [
-        "Upravljanje stresom",
-        "Optimizacija sna",
-        "Formiranje zdravih navika",
-        "Mentalna stabilnost",
       ],
     },
   ]
@@ -66,7 +56,8 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Responsive Grid for services */}
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <Card key={index} className="h-full hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
@@ -86,7 +77,10 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Zakaži Termin</Button>
+                <Button onClick={() => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }} className="w-full bg-green-600 hover:bg-green-700">Zakaži Termin</Button>
               </CardContent>
             </Card>
           ))}

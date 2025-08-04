@@ -16,8 +16,12 @@ export function About() {
           <div className="space-y-8">
             <div className="space-y-4">
             <h2 className="text-4xl font-bold text-gray-900">Upoznaj svog personalnog trenera</h2>
-<p className="text-lg text-gray-600 leading-relaxed">
-  Zovem se Luka Dakić i kao licencirani personalni trener sa više od 5 godina iskustva, pomogao sam desetinama ljudi širom Srbije da dostignu svoje fitness ciljeve. Moj pristup kombinuje naučno zasnovane metode vežbanja sa individualnim planovima prilagođenim vašim potrebama.
+            <p className="text-lg text-gray-600 leading-relaxed">
+  Zovem se <strong>Luka Dakić</strong> i master sam Fakulteta sporta i fizičkog vaspitanja. Više od 7 godina radim kao <strong>personalni trener</strong>, pomažući klijentima svih uzrasta da ostvare svoje <em>fitness ciljeve</em> – bilo da je reč o mršavljenju, povećanju mišićne mase, poboljšanju kondicije ili uklanjanju bolova u leđima i zglobovima.
+</p>
+
+<p className="text-lg text-gray-600 leading-relaxed mt-4">
+  Moja filozofija treninga zasniva se na <strong>individualnom pristupu</strong>. Verujem da je svaki čovek jedinstven – sa različitim potrebama, ciljevima i mogućnostima. Zato svaki trening program koji kreiram bude pažljivo prilagođen tebi – tvom telu, tvom načinu života i tvom tempu.
 </p>
             </div>
 
@@ -25,9 +29,9 @@ export function About() {
               <h3 className="text-xl font-semibold text-gray-900">Moje sertifikacije:</h3>
               <ul className="space-y-2 text-gray-600">
               <li>• Diplomirani Profesor Fizickog Vaspitanja i Sporta </li>
-              <li>• NASM Sertifikovani Personalni Trener (Nacionalna Akademija Sporta i Medicine)</li>
-              <li>• NASM Sertifikovani Personalni Trener NASM Specijalista Kondicionog Treninga</li>
-              <li>• </li>
+              <li>• NASM Sertifikovani Personalni Trener </li>
+              <li>• NASM Specijalista Korektivnog Vezbanja</li>
+              <li>• NASM Specijalista Kondicionog Treninga</li>
               <li>• HFS Specijalista Funkcionalnog Treninga</li>
               <li>• HFS Pravilna Ishrana i Suplementacija</li>
               <li>• HFS Instruktor Grupnog Fitnesa</li> 
