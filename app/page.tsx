@@ -7,9 +7,12 @@ import { Testimonials } from "@/components/testimonials"
 import { Gallery } from "@/components/gallery"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { Transformation } from "@/components/transformation"
+
 
 export default function Home() {
   return (
+    console.log(Transformation),
     <>
       <Head>
         <title>Personalni Trener | Fit sa Lukom</title>
@@ -33,6 +36,7 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
+        <Transformation />
         <Testimonials />
         <Gallery />
         <Contact />
