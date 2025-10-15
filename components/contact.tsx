@@ -13,7 +13,7 @@ export function Contact() {
     {
       icon: Phone,
       title: "Telefon",
-      details: ["+381 64 123 4567", "Poziv ili poruka"],
+      details: ["+381 66 244 454", "Poziv ili poruka"],
     },
     {
       icon: Mail,
