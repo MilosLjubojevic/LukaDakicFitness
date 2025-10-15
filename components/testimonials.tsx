@@ -34,38 +34,38 @@ export function Testimonials() {
   ]
 
   return (
-    <section id="iskustva" className="py-20 bg-lime-50" role="region" aria-labelledby="naslov-iskustva">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 id="naslov-iskustva" className="text-4xl font-bold text-gray-900 mb-4">
+    <section id="testimonials" className="py-12 sm:py-16 md:py-20 bg-lime-50" role="region" aria-labelledby="naslov-iskustva">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 id="naslov-iskustva" className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
             Priče o Uspehu Naših Klijenata
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Ne morate nam verovati na reč. Pogledajte šta naši klijenti kažu o svojim transformacijama sa FitCoach Pro.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
-           <Card key={index} className="h-full flex flex-col">
-           <CardContent className="p-6 flex flex-col justify-between flex-1">
-             <div className="space-y-4">
+           <Card key={index} className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow duration-300">
+           <CardContent className="p-4 sm:p-5 md:p-6 flex flex-col justify-between flex-1">
+             <div className="space-y-3 sm:space-y-4">
                <div className="flex" aria-label={`Ocena ${testimonial.rating} zvezdica`}>
                  {[...Array(testimonial.rating)].map((_, i) => (
-                   <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                   <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
                  ))}
                </div>
-               <p className="text-gray-600 italic">"{testimonial.text}"</p>
+               <p className="text-sm sm:text-base text-gray-600 italic leading-relaxed">"{testimonial.text}"</p>
              </div>
-             <div className="flex items-center space-x-3 pt-4">
+             <div className="flex items-center space-x-2 sm:space-x-3 pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-gray-100">
                <img
                  src={testimonial.image}
                  alt={`Fotografija korisnika ${testimonial.name}`}
-                 className="w-12 h-12 rounded-full object-cover"
+                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover flex-shrink-0"
                />
-               <div>
-                 <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                 <div className="text-sm text-gray-600">{testimonial.role}</div>
+               <div className="min-w-0">
+                 <div className="font-semibold text-sm sm:text-base text-gray-900 truncate">{testimonial.name}</div>
+                 <div className="text-xs sm:text-sm text-gray-600 truncate">{testimonial.role}</div>
                </div>
              </div>
            </CardContent>

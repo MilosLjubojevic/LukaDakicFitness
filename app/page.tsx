@@ -5,7 +5,7 @@ import { About } from "@/components/about"
 import { Services } from "@/components/services"
 import { Testimonials } from "@/components/testimonials"
 import { Gallery } from "@/components/gallery"
-import { Contact } from "@/components/contact"
+import  { Contact}  from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Transformation } from "@/components/transformation"
 

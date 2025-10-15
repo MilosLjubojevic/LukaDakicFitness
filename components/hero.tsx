@@ -53,14 +53,16 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
+            
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                 aria-label="Započni svoj fitnes put"
                 title="Započni svoj fitnes put sada"
                 onClick={() => {
-                  const el = document.getElementById("usluge");
+                  const el = document.getElementById("services");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
+                  
                 }}
               >
                 Započni svoj put

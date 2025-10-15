@@ -8,6 +8,8 @@ import CallTotActionCard from "@/components/ui/call-to-action-card"
 
 export function Services() {
   const [isOpen, setIsOpen] = useState(false)
+
+  
   
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -62,7 +64,7 @@ export function Services() {
   ]
 
   return (
-    <section id="usluge" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" role="region" aria-labelledby="naslov-usluga">
+    <section id="services" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" role="region" aria-labelledby="naslov-usluga">
       {/* Background decorations */}
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-green-200 rounded-full blur-3xl opacity-20"></div>
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-20"></div>
