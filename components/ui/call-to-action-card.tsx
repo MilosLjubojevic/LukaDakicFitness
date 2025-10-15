@@ -84,6 +84,7 @@ export default function ContactPopup() {
             </button>
 
             {/* Phone Button */}
+            <div className='block md:hidden'>
             <button
               onClick={handlePhone}
               className="w-full flex items-center gap-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group"
@@ -98,14 +99,28 @@ export default function ContactPopup() {
               <div className="text-2xl group-hover:translate-x-1 transition-transform">→</div>
             </button>
           </div>
-
+          {/*Phone on desktop */}
+          <div className="hidden md:block text-lg font-semibold"  onClick={(e) => e.stopPropagation()}>
+            <div className="cursor-default w-full flex items-center gap-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group">
+              <div className="w-10 h-10 bg-white bg-opacity-10 rounded-lg flex items-center justify-center group-hover:bg-opacity-20 transition-all">
+                <Phone size={20} />
+              </div>
+              <div className="flex-1 text-left">
+                <div className="text-lg font-bold">+381 66 244 454</div>
+                <div className="text-sm opacity-90">Direktan poziv</div>
+              </div>
+              <div className="text-2xl group-hover:translate-x-1 transition-transform">→</div>
+            </div>
+          </div>
+          </div>
+        
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">ili</span>
+              
             </div>
           </div>
 
