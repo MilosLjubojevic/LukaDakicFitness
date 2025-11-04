@@ -1,34 +1,25 @@
-import Image from "next/image"
-import Klijent1 from "@/public/Klijent1.jpg"
-import Klijent2 from "@/public/Klijent2.jpg"
+"use client";
+
+import Image from "next/image";
+import Klijent1 from "@/public/Klijent1.jpg";
+import Klijent2 from "@/public/Klijent2.jpg";
+import Klijent3 from "@/public/Klijent3.jpg";
 
 export function Transformation() {
   const images = [
     {
       src: Klijent1,
-      alt: "Transformacija klijenta - pre i posle rezultati",
+      alt: "Transformacija klijenta – pre i posle rezultati",
     },
     {
       src: Klijent2,
       alt: "Uspešna transformacija tela klijenta",
     },
     {
-      src: Klijent2,
+      src: Klijent3,
       alt: "Uspešna transformacija tela klijenta",
     },
-    {
-      src: Klijent2,
-      alt: "Uspešna transformacija tela klijenta",
-    },
-    {
-      src: Klijent2,
-      alt: "Uspešna transformacija tela klijenta",
-    },
-    {
-      src: Klijent2,
-      alt: "Uspešna transformacija tela klijenta",
-    },
-  ]
+  ];
 
   return (
     <section
@@ -42,11 +33,11 @@ export function Transformation() {
             id="transformacije-klijenata"
             className="text-4xl font-bold text-gray-900 mb-4"
           >
-            Pogledajte Transformacije Klijenata
+            Pogledajte transformacije klijenata
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Pravi rezultati mojih klijenata koji su postigli svoje ciljeve uz
-            personalizovane treninge i ishranu.
+            personalizovane treninge i plan ishrane.
           </p>
         </div>
 
@@ -69,5 +60,5 @@ export function Transformation() {
         </div>
       </div>
     </section>
-  )
+  );
 }

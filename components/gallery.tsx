@@ -1,7 +1,7 @@
-import Image from "next/image"
-import BackExercise from "@/public/BackExercise.jpg"
-import SquatExercise from "@/public/SquatExercise.jpg"
-import DakicVesla from "@/public/DakicVesla.jpg"
+import Image from "next/image";
+import BackExercise from "@/public/BackExercise.jpg";
+import SquatExercise from "@/public/SquatExercise.jpg";
+import DakicVesla from "@/public/DakicVesla.jpg";
 
 export function Gallery() {
   const images = [
@@ -17,7 +17,7 @@ export function Gallery() {
       src: DakicVesla,
       alt: "Veslanje vežba – jačanje leđa i ruku uz profesionalni nadzor",
     },
-  ]
+  ];
 
   return (
     <section
@@ -31,17 +31,16 @@ export function Gallery() {
             id="galerija-treninga"
             className="text-4xl font-bold text-gray-900 mb-4"
           >
-            Galerija Treninga – Profesionalni Fitnes i Personalni Treninzi
+            Galerija treninga – profesionalni fitnes i personalni treninzi
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Pogledajte kako izgledaju moji <strong>personalni treninzi</strong> i 
- <strong> fitnes programi</strong>. Ja vas vodim kroz
-<strong> pravilnu tehniku vežbanja</strong>, pomažem vam da
-<strong> izgradite snagu</strong>, povećate izdržljivost i postignete
-najbolje rezultate.  
-Zavirite u moj prostor za trening i osetite energiju vežbanja uz
-stručan nadzor, motivaciju i podršku <strong>profesionalnog
-personalnog trenera</strong>.
+            Pogledajte kako izgledaju moji <strong>personalni treninzi</strong>{" "}
+            i <strong>fitnes programi</strong>. Ja vas vodim kroz{" "}
+            <strong>pravilnu tehniku vežbanja</strong>, pomažem vam da{" "}
+            <strong>izgradite snagu</strong>, povećate izdržljivost i postignete
+            najbolje rezultate. Zavirite u moj prostor za trening i osetite
+            energiju vežbanja uz stručan nadzor, motivaciju i podršku{" "}
+            <strong>profesionalnog personalnog trenera</strong>.
           </p>
         </div>
 
@@ -64,5 +63,5 @@ personalnog trenera</strong>.
         </div>
       </div>
     </section>
-  )
+  );
 }
