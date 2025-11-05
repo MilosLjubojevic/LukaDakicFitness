@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Luka Dakić Fitness",
     images: [
       {
-        url: "/og-image.jpg", // ensure this exists in /public
+        url: "/DakicPozira.jpg", // ensure this exists in /public
         width: 1200,
         height: 630,
         alt: "Luka Dakić – personalni trener Novi Sad",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/DakicPozira.jpg",
   },
 
   manifest: "/site.webmanifest",
