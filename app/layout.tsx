@@ -21,20 +21,20 @@ export const metadata: Metadata = {
   authors: [{ name: "Luka Dakić" }],
   creator: "Luka Dakić",
   publisher: "Luka Dakić Fitness",
-  metadataBase: new URL("https://lukadakic.com"), // change to your actual domain
+  metadataBase: new URL("https://lukadakicpersonalnitrenernovisad.com"),
 
   openGraph: {
     title: "Luka Dakić | Licencirani Fitness Trener",
     description:
-      "Transformiši svoje telo i um uz profesionalni pristup personalnog trenera Luke Đakića.",
-    url: "https://lukadakic.com",
+      "Transformiši svoje telo i um uz profesionalni pristup personalnog trenera Luke Dakića.",
+    url: "https://lukadakicpersonalnitrenernovisad.com",
     siteName: "Luka Dakić Fitness",
     images: [
       {
-        url: "/og-image.jpg", // add an image in your /public folder
+        url: "/og-image.jpg", // ensure this exists in /public
         width: 1200,
         height: 630,
-        alt: "Luka Dakić Fitness Trainer",
+        alt: "Luka Dakić – personalni trener Novi Sad",
       },
     ],
     locale: "sr_RS",
@@ -46,18 +46,19 @@ export const metadata: Metadata = {
     title: "Luka Dakić | Licencirani Fitness Trener",
     description:
       "Ostvari svoje ciljeve uz stručnu pomoć personalnog trenera Luke Dakića.",
-    creator: "@lukadakic", // your Twitter handle if available
-    images: ["/og-image.jpg"],
+    creator: "@lukadakic", // optional if you don’t have a Twitter account
+    images: ["/DakicPozira.jpg"],
   },
 
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 
   manifest: "/site.webmanifest",
   category: "fitness",
-  generator: "Next.js & v0.dev",
+  generator: "Next.js 15",
 };
 
 export default function RootLayout({
@@ -66,7 +67,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="sr">
+      <head />
       <body>{children}</body>
     </html>
   );
