@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Luka Dakić Fitness",
     images: [
       {
-        url: "/DakicPozira.jpg", // ensure this exists in /public
+        url: "/DakicPozira.jpg",
         width: 1200,
         height: 630,
         alt: "Luka Dakić – personalni trener Novi Sad",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "Luka Dakić | Licencirani Fitness Trener",
     description:
       "Ostvari svoje ciljeve uz stručnu pomoć personalnog trenera Luke Dakića.",
-    creator: "@lukadakic", // optional if you don’t have a Twitter account
+    creator: "@lukadakic",
     images: ["/DakicPozira.jpg"],
   },
 
@@ -69,7 +69,25 @@ export default function RootLayout({
   return (
     <html lang="sr">
       <head />
-      <body>{children}</body>
+      <body>
+        {children}
+
+        {/* ✅ Google Analytics (correct Next.js way) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-HR77784YX1"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-HR77784YX1');
+            `,
+          }}
+        />
+      </body>
     </html>
   );
 }
