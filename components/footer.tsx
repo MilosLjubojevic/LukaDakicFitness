@@ -186,7 +186,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-8 text-center text-gray-400 text-xs sm:text-sm">
           <p className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-1">
-            <span>&copy; 2024 FitCoach Pro. Sva prava zadržana.</span>
+            <span>&copy; 2024 Luka Dakic. Sva prava zadržana.</span>
             <span className="hidden sm:inline">|</span>
             <span className="flex gap-2 sm:gap-1">
               <a

@@ -7,12 +7,12 @@ export const metadata: Metadata = {
     template: "%s | Luka Dakić Fitness",
   },
   description:
-    "Luka Dakić je licencirani fitness trener posvećen transformaciji tela i uma. Kreiraj svoj personalizovani plan treninga i prehrane danas.",
+    "Transformiši svoje telo i um uz licenciranog personalnog trenera Luku Dakića iz Novog Sada. Individualni treninzi, plan ishrane i profesionalna podrška.",
   keywords: [
     "fitness trener",
-    "personalni trener",
+    "personalni trener Novi Sad",
     "trening plan",
-    "prehrana",
+    "ishrana",
     "Luka Dakić",
     "transformacija",
     "zdravlje",
@@ -26,12 +26,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Luka Dakić | Licencirani Fitness Trener",
     description:
-      "Transformiši svoje telo i um uz profesionalni pristup personalnog trenera Luke Dakića.",
+      "Luka Dakić – licencirani fitness trener iz Novog Sada. Stručni treninzi, planovi ishrane i podrška za tvoju transformaciju.",
     url: "https://lukadakicpersonalnitrenernovisad.com",
     siteName: "Luka Dakić Fitness",
     images: [
       {
-        url: "/DakicPozira.jpg",
+        url: "/DakicPozira.jpg", // ✅ or replace with your logo/photo
         width: 1200,
         height: 630,
         alt: "Luka Dakić – personalni trener Novi Sad",
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     description:
       "Ostvari svoje ciljeve uz stručnu pomoć personalnog trenera Luke Dakića.",
     creator: "@lukadakic",
-    images: ["/DakicPozira.jpg"],
+    images: ["/DakicPozira.jpg"], // ✅ same image for Twitter
   },
 
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.ico", // ✅ your existing favicon
     shortcut: "/favicon.ico",
-    apple: "/DakicPozira.jpg",
+    apple: "/favicon.ico",
   },
 
   manifest: "/site.webmanifest",
@@ -68,11 +68,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sr">
-      <head />
+      <head>
+        {/* ✅ Structured data: tells Google your logo and brand */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Luka Dakić Fitness",
+              url: "https://lukadakicpersonalnitrenernovisad.com",
+              logo: "https://lukadakicpersonalnitrenernovisad.com/favicon.ico", // or your /DakicPozira.jpg
+              sameAs: [
+                "https://www.instagram.com/luka__dakic",
+                // add Facebook, TikTok, etc if you want
+              ],
+            }),
+          }}
+        />
+      </head>
       <body>
         {children}
 
-        {/* ✅ Google Analytics (correct Next.js way) */}
+        {/* ✅ Google Analytics */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-HR77784YX1"
