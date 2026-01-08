@@ -1,7 +1,35 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import BackExercise from "@/public/BackExercise.jpg";
 import SquatExercise from "@/public/SquatExercise.jpg";
 import DakicVesla from "@/public/DakicVesla.jpg";
+
+function GalleryImage({ src, alt, index }: { src: any; alt: string; index: number }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow aspect-[4/3]"
+    >
+      {/* Skeleton loader */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        className={`object-cover hover:scale-105 transition-all duration-300 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+        priority={index < 3}
+        onLoad={() => setIsLoading(false)}
+      />
+    </div>
+  );
+}
 
 export function Gallery() {
   const images = [
@@ -46,19 +74,7 @@ export function Gallery() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow aspect-[4/3]"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover hover:scale-105 transition-transform duration-300"
-                priority={index < 3}
-              />
-            </div>
+            <GalleryImage key={index} src={image.src} alt={image.alt} index={index} />
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star, ArrowRight, CheckCircle } from "lucide-react";
 
@@ -116,9 +117,12 @@ export function Hero() {
                 className="absolute -inset-2 bg-gradient-to-r from-green-600 to-blue-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition duration-500"
                 aria-hidden="true"
               ></div>
-              <img
+              <Image
                 src="/DakicPozira.jpg"
                 alt="Luka Dakić – profesionalni fitnes trener pozira u teretani"
+                width={600}
+                height={750}
+                priority
                 className="relative rounded-3xl shadow-2xl w-full object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
               />
             </div>

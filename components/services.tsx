@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Dumbbell, Users, Utensils, Check, Sparkles } from "lucide-react";
+import { Dumbbell, Users, Utensils, Check, Sparkles, X } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -14,6 +14,7 @@ import CallTotActionCard from "@/components/ui/call-to-action-card";
 
 export function Services() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showComparison, setShowComparison] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -26,10 +27,10 @@ export function Services() {
       description:
         "Individualni treninzi prilagođeni vašim ciljevima i nivou fizičke spremnosti.",
       price: "20",
-      period: "sesija",
+      period: "po sesiji (60 min)",
       features: [
         "Personalizovan plan treninga",
-        "Korekcija forme",
+        "Korekcija forme u realnom vremenu",
         "Praćenje napretka",
         "Fleksibilno zakazivanje",
       ],
@@ -42,11 +43,11 @@ export function Services() {
       description:
         "Trening u malim grupama koji kombinuje motivaciju i individualni pristup.",
       price: "15",
-      period: "po osobi",
+      period: "po osobi / sesiji (60 min)",
       features: [
         "2-4 osobe maksimalno",
         "Grupna motivacija",
-        "Isplativije opcije",
+        "Isplativija opcija",
         "Zabavna atmosfera",
       ],
       badge: null,
@@ -63,11 +64,22 @@ export function Services() {
         "Prilagođeni jelovnici",
         "Praćenje makronutrijenata",
         "Saveti o suplementima",
-        "Usklađivanje sa stilom života",
+        "Podrška putem poruka",
       ],
       badge: "Najbolja vrednost",
       gradient: "from-orange-500 to-red-600",
     },
+  ];
+
+  const comparisonFeatures = [
+    { name: "Individualna pažnja", personal: true, semi: "Delimično", nutrition: false },
+    { name: "Korekcija forme", personal: true, semi: true, nutrition: false },
+    { name: "Plan treninga", personal: true, semi: true, nutrition: false },
+    { name: "Plan ishrane", personal: false, semi: false, nutrition: true },
+    { name: "Praćenje makronutrijenata", personal: false, semi: false, nutrition: true },
+    { name: "Fleksibilno zakazivanje", personal: true, semi: "Ograničeno", nutrition: true },
+    { name: "Grupna motivacija", personal: false, semi: true, nutrition: false },
+    { name: "Podrška putem poruka", personal: true, semi: true, nutrition: true },
   ];
 
   return (
@@ -186,6 +198,102 @@ export function Services() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Comparison Table Toggle */}
+        <div className="text-center mt-12">
+          <Button
+            onClick={() => setShowComparison(!showComparison)}
+            variant="ghost"
+            className="text-green-600 hover:text-green-700 hover:bg-green-50 font-semibold"
+          >
+            {showComparison ? "Sakrij poređenje" : "Uporedi usluge"}
+            <svg
+              className={`ml-2 w-4 h-4 transition-transform duration-300 ${showComparison ? "rotate-180" : ""}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </Button>
+        </div>
+
+        {/* Comparison Table */}
+        <div
+          className={`overflow-hidden transition-all duration-500 ${
+            showComparison ? "max-h-[800px] opacity-100 mt-8" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-200">
+                    <th className="text-left py-4 px-6 font-semibold text-gray-900">Karakteristika</th>
+                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                      <div className="flex flex-col items-center gap-1">
+                        <Dumbbell className="w-5 h-5 text-green-600" />
+                        <span className="text-sm">Personalni</span>
+                      </div>
+                    </th>
+                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                      <div className="flex flex-col items-center gap-1">
+                        <Users className="w-5 h-5 text-blue-600" />
+                        <span className="text-sm">Polupersonalni</span>
+                      </div>
+                    </th>
+                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                      <div className="flex flex-col items-center gap-1">
+                        <Utensils className="w-5 h-5 text-orange-600" />
+                        <span className="text-sm">Ishrana</span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonFeatures.map((feature, index) => (
+                    <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      <td className="py-3 px-6 text-gray-700">{feature.name}</td>
+                      <td className="py-3 px-4 text-center">
+                        {feature.personal === true ? (
+                          <Check className="w-5 h-5 text-green-600 mx-auto" />
+                        ) : feature.personal === false ? (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        ) : (
+                          <span className="text-sm text-gray-500">{feature.personal}</span>
+                        )}
+                      </td>
+                      <td className="py-3 px-4 text-center">
+                        {feature.semi === true ? (
+                          <Check className="w-5 h-5 text-blue-600 mx-auto" />
+                        ) : feature.semi === false ? (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        ) : (
+                          <span className="text-sm text-gray-500">{feature.semi}</span>
+                        )}
+                      </td>
+                      <td className="py-3 px-4 text-center">
+                        {feature.nutrition === true ? (
+                          <Check className="w-5 h-5 text-orange-600 mx-auto" />
+                        ) : feature.nutrition === false ? (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        ) : (
+                          <span className="text-sm text-gray-500">{feature.nutrition}</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="bg-gray-100 border-t-2 border-gray-200">
+                    <td className="py-4 px-6 font-bold text-gray-900">Cena</td>
+                    <td className="py-4 px-4 text-center font-bold text-green-600">20€/sesija</td>
+                    <td className="py-4 px-4 text-center font-bold text-blue-600">15€/osoba</td>
+                    <td className="py-4 px-4 text-center font-bold text-orange-600">50€/2 meseca</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
         {/* Bottom CTA */}
