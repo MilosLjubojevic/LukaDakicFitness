@@ -4,7 +4,12 @@
       "Bash(npm install:*)",
       "Bash(tree:*)",
       "Bash(node scripts/optimize-images.mjs:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npx next:*)",
+      "Bash(npm run dev:*)"
     ]
   }
 }

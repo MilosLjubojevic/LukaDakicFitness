@@ -1,201 +1,218 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star, ArrowRight, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import Modal from "@/components/ui/modal";
+import CallToActionCard from "@/components/ui/call-to-action-card";
 
 export function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.12 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: 40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+        delay: 0.3,
+      },
+    },
+  };
+
   return (
     <section
       id="home"
-      className="relative pt-24 pb-20 bg-gradient-to-br from-green-50 via-white to-blue-50 overflow-hidden"
+      className="relative pt-28 pb-24 bg-gradient-to-b from-green-50/80 via-white to-white overflow-hidden"
       role="region"
       aria-label="Početna sekcija – fitnes transformacija"
     >
-      {/* Dekorativni elementi pozadine */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-green-200 rounded-full blur-3xl opacity-20 -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-20 -z-10"></div>
+      {/* Background blobs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-100 rounded-full blur-3xl opacity-30 translate-x-1/3 -translate-y-1/4" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 -translate-x-1/3 translate-y-1/4" />
 
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Leva kolona – tekst */}
-          <div className="space-y-8 animate-fade-in">
-            {/* Glavni naslov */}
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left — Text */}
+          <motion.div
+            className="space-y-8"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div variants={itemVariants}>
+              <div className="inline-flex items-center gap-2 bg-green-100/80 backdrop-blur-sm text-green-800 px-5 py-2.5 rounded-full text-sm font-semibold border border-green-200/50">
                 <CheckCircle className="w-4 h-4" aria-hidden="true" />
                 <span>Sertifikovani personalni trener</span>
               </div>
+            </motion.div>
 
-              <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                Transformiši svoje
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 block mt-2">
-                  telo i um
-                </span>
-              </h1>
+            <motion.h1
+              className="text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.1]"
+              variants={itemVariants}
+            >
+              Transformiši svoje
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 block mt-2 pb-1">
+                telo i um
+              </span>
+            </motion.h1>
 
-              <p
-                className="text-xl text-gray-600 leading-relaxed max-w-xl"
-                lang="sr"
-              >
-                Ostvari svoje fitnes ciljeve uz personalizovane planove
-                treninga. Postani jači, izdržljiviji i sigurniji uz stručnu
-                podršku, motivaciju i personalni pristup.
-              </p>
-            </div>
+            <motion.p
+              className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xl"
+              variants={itemVariants}
+              lang="sr"
+            >
+              Ostvari svoje fitnes ciljeve uz personalizovane planove
+              treninga. Postani jači, izdržljiviji i sigurniji uz stručnu
+              podršku, motivaciju i personalni pristup.
+            </motion.p>
 
-            {/* Ocena */}
-            <div
-              className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm border border-gray-100 w-fit"
+            {/* Rating chip */}
+            <motion.div
+              className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-gray-100 w-fit"
+              variants={itemVariants}
               aria-label="Ocena zadovoljstva klijenata"
               role="group"
             >
               <div
-                className="flex gap-1"
-                aria-label="Ocena 4.9 od 5 zvezdica"
+                className="flex gap-0.5"
+                aria-label="Ocena 5 od 5 zvezdica"
                 role="img"
               >
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                    aria-hidden={i >= 4 ? "true" : "false"} // prva 4 zvezdice “popunjene”, poslednja polupopunjena
+                    className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                    aria-hidden="true"
                   />
                 ))}
               </div>
               <div className="border-l border-gray-200 pl-3">
-                <div className="text-lg font-bold text-gray-900">4.9/5</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-base font-bold text-gray-900">5/5</div>
+                <div className="text-xs text-gray-500">
                   100+ zadovoljnih klijenata
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* CTA dugme */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
-                aria-label="Započni svoj fitnes put sada – vodi do sekcije Usluge"
-                title="Započni svoj fitnes put sada"
-                onClick={() => {
-                  const el = document.getElementById("services");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
+            {/* CTA */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-block"
               >
-                Započni svoj put
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-lg px-8 py-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  aria-label="Započni svoj fitnes put sada"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Započni svoj put
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+            </motion.div>
 
-            {/* Statistika */}
-            <div
-              className="flex flex-wrap gap-8 pt-4"
+            {/* Quick stats */}
+            <motion.div
+              className="flex gap-10 pt-2"
+              variants={itemVariants}
               role="group"
               aria-label="Ključni podaci o treneru"
             >
-              <div>
-                <div className="text-3xl font-bold text-gray-900">7+</div>
-                <div className="text-sm text-gray-600">Godina iskustva</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">100+</div>
-                <div className="text-sm text-gray-600">
-                  Zadovoljnih klijenata
+              {[
+                { value: "7+", label: "Godina iskustva" },
+                { value: "100+", label: "Zadovoljnih klijenata" },
+                { value: "15+", label: "Sertifikata" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-2xl font-bold text-gray-900">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-gray-500">{stat.label}</div>
                 </div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">15+</div>
-                <div className="text-sm text-gray-600">Sertifikata</div>
-              </div>
-            </div>
-          </div>
+              ))}
+            </motion.div>
+          </motion.div>
 
-          {/* Desna kolona – slika */}
-          <div className="relative animate-fade-in-delayed">
+          {/* Right — Image */}
+          <motion.div
+            className="relative"
+            initial="hidden"
+            animate="visible"
+            variants={imageVariants}
+          >
             <div className="relative group">
               <div
-                className="absolute -inset-2 bg-gradient-to-r from-green-600 to-blue-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition duration-500"
+                className="absolute -inset-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-35 transition-opacity duration-500"
                 aria-hidden="true"
-              ></div>
+              />
               <Image
                 src="/DakicPozira.jpg"
                 alt="Luka Dakić – profesionalni fitnes trener pozira u teretani"
                 width={600}
                 height={750}
                 priority
-                className="relative rounded-3xl shadow-2xl w-full object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full object-cover"
               />
             </div>
 
-            {/* Kartica sa statistikama */}
-            <div
-              className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 backdrop-blur-sm animate-float"
+            {/* Floating card */}
+            <motion.div
+              className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-100"
               aria-label="Broj uspešno transformisanih klijenata"
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center">
                   <CheckCircle
-                    className="w-6 h-6 text-green-600"
+                    className="w-5 h-5 text-green-600"
                     aria-hidden="true"
                   />
                 </div>
                 <div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                     100+
                   </div>
-                  <div className="text-gray-600 font-medium">
+                  <div className="text-gray-500 text-sm font-medium">
                     Transformisanih klijenata
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fade-in-delayed {
-          from {
-            opacity: 0;
-            transform: translateX(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out;
-        }
-        .animate-fade-in-delayed {
-          animation: fade-in-delayed 0.8s ease-out 0.2s backwards;
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <CallToActionCard onClose={() => setIsModalOpen(false)} />
+      </Modal>
     </section>
   );
 }

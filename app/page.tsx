@@ -5,9 +5,11 @@ import { Services } from "@/components/services";
 import { Testimonials } from "@/components/testimonials";
 import { Gallery } from "@/components/gallery";
 import { Contact } from "@/components/contact";
+import { Topics } from "@/components/topics";
 import { Transformation } from "@/components/transformation";
 import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
+import { MealPlanSignup } from "@/components/meal-plan-signup";
 import { FloatingCTA } from "@/components/floating-cta";
 import { BackToTop } from "@/components/back-to-top";
 import { SectionIndicator } from "@/components/section-indicator";
@@ -18,8 +20,10 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      <Topics />
       <Services />
       <Transformation />
+      {/* <MealPlanSignup /> */}
       <Testimonials />
       <Gallery />
       <FAQ />

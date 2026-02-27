@@ -3,13 +3,18 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Modal from "@/components/ui/modal";
+import CallTotActionCard from "@/components/ui/call-to-action-card";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import DakicLogo from "../public/DakicLogoPun.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
-  // Smooth scroll helper
+  // Smooth scroll helper — navigates home first if target doesn't exist on current page
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
@@ -18,7 +23,10 @@ export function Header() {
     const el = document.getElementById(targetId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMenuOpen(false); // close mobile menu if open
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(false);
+      router.push(`/#${targetId}`);
     }
   };
 
@@ -75,10 +83,7 @@ export function Header() {
             className="hidden md:block bg-gradient-to-r from-green-900 to-green-700 hover:from-green-800 hover:to-green-600 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm lg:text-base"
             aria-label="Zakaži trening"
             title="Zakaži besplatan trening"
-            onClick={() => {
-              const el = document.getElementById("services");
-              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
+            onClick={() => setIsModalOpen(true)}
           >
             Zakaži trening
           </Button>
@@ -128,10 +133,8 @@ export function Header() {
                 className="bg-gradient-to-r from-green-900 to-green-700 hover:from-green-800 hover:to-green-600 w-full shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-95 mt-2"
                 title="Zakaži trening"
                 onClick={() => {
-                  const el = document.getElementById("services");
-                  if (el)
-                    el.scrollIntoView({ behavior: "smooth", block: "start" });
                   setIsMenuOpen(false);
+                  setIsModalOpen(true);
                 }}
               >
                 Zakaži trening
@@ -140,6 +143,10 @@ export function Header() {
           </nav>
         )}
       </div>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <CallTotActionCard onClose={() => setIsModalOpen(false)} />
+      </Modal>
     </header>
   );
 }

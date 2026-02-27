@@ -1,167 +1,146 @@
-import React, { useState } from 'react';
-import { Phone, MessageCircle, X, Mail } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, MessageCircle, X, Clock, Star } from 'lucide-react';
+import Stefan from '@/public/Stefo.jpg';
 
-export default function ContactPopup() {
-  const [isOpen, setIsOpen] = useState(true);
-  
+interface ContactPopupProps {
+  onClose?: () => void;
+}
+
+export default function ContactPopup({ onClose }: ContactPopupProps) {
   const phoneNumber = '+38166244454';
-  const phoneNumberDisplay = '+381 66 244 454';
-  
+  const prefilledMessage = encodeURIComponent(
+    'Zdravo! Zanima me besplatna konsultacija za trening. Kada ste dostupni?'
+  );
+
   const handleViber = () => {
     window.open(`viber://chat?number=${phoneNumber}`, '_blank');
   };
-  
+
   const handleWhatsApp = () => {
-    window.open(`https://wa.me/${phoneNumber}`, '_blank');
+    window.open(`https://wa.me/${phoneNumber}?text=${prefilledMessage}`, '_blank');
   };
-  
+
   const handlePhone = () => {
     window.location.href = `tel:${phoneNumber}`;
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fade-in">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full relative animate-scale-in overflow-hidden">
-        {/* Gradient header decoration */}
-        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500"></div>
-        
-        {/* Close Button */}
-        <button
-          onClick={() => setIsOpen(false)}
-          className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 hover:rotate-90 transition-all duration-300 z-10"
-          aria-label="Zatvori"
-        >
-          <X size={24} />
-        </button>
+    <div
+      className="bg-white rounded-3xl shadow-2xl max-w-md w-full relative overflow-hidden mx-4 animate-in zoom-in-95 slide-in-from-bottom-4 duration-300"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:text-gray-600 hover:bg-gray-200 transition-all duration-200 z-10"
+        aria-label="Zatvori"
+      >
+        <X size={18} />
+      </button>
 
-        {/* Content */}
-        <div className="p-8 pt-10">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Phone className="w-8 h-8 text-white" />
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
-              Kontaktirajte Nas
-            </h2>
-            <p className="text-gray-600">
-              Izaberite način komunikacije koji vam odgovara
-            </p>
-          </div>
-
-          {/* Contact Buttons */}
-          <div className="space-y-3">
-            {/* Viber Button */}
-            <button
-              onClick={handleViber}
-              className="w-full flex items-center gap-4 bg-gradient-to-r from-[#7360f2] to-[#665ac7] hover:from-[#5f4dd4] hover:to-[#5347b8] text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group"
-            >
-              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-                <MessageCircle size={20} />
-              </div>
-              <div className="flex-1 text-left">
-                <div className="text-lg font-bold">Viber</div>
-                <div className="text-sm opacity-90">Brza poruka</div>
-              </div>
-              <div className="text-2xl group-hover:translate-x-1 transition-transform">→</div>
-            </button>
-
-            {/* WhatsApp Button */}
-            <button
-              onClick={handleWhatsApp}
-              className="w-full flex items-center gap-4 bg-gradient-to-r from-[#25D366] to-[#20b858] hover:from-[#20b858] hover:to-[#1ca04b] text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group"
-            >
-              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-                <MessageCircle size={20} />
-              </div>
-              <div className="flex-1 text-left">
-                <div className="text-lg font-bold">WhatsApp</div>
-                <div className="text-sm opacity-90">Instant chat</div>
-              </div>
-              <div className="text-2xl group-hover:translate-x-1 transition-transform">→</div>
-            </button>
-
-            {/* Phone Button */}
-            <div className='block md:hidden'>
-            <button
-              onClick={handlePhone}
-              className="w-full flex items-center gap-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group"
-            >
-              <div className="w-10 h-10 bg-white bg-opacity-10 rounded-lg flex items-center justify-center group-hover:bg-opacity-20 transition-all">
-                <Phone size={20} />
-              </div>
-              <div className="flex-1 text-left">
-                <div className="text-lg font-bold">Pozovi</div>
-                <div className="text-sm opacity-90">Direktan poziv</div>
-              </div>
-              <div className="text-2xl group-hover:translate-x-1 transition-transform">→</div>
-            </button>
-          </div>
-          {/*Phone on desktop */}
-          <div className="hidden md:block text-lg font-semibold"  onClick={(e) => e.stopPropagation()}>
-            <div className="cursor-default w-full flex items-center gap-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group">
-              <div className="w-10 h-10 bg-white bg-opacity-10 rounded-lg flex items-center justify-center group-hover:bg-opacity-20 transition-all">
-                <Phone size={20} />
-              </div>
-              <div className="flex-1 text-left">
-                <div className="text-lg font-bold">+381 66 244 454</div>
-                <div className="text-sm opacity-90">Direktan poziv</div>
-              </div>
-              <div className="text-2xl group-hover:translate-x-1 transition-transform">→</div>
-            </div>
-          </div>
-          </div>
-        
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              
-            </div>
-          </div>
-
-         
-
-          {/* Available time */}
-          <p className="text-center text-xs text-gray-500 mt-4">
-            Dostupan sam radnim danima od 08:00 do 17:00
-          </p>
+      {/* Green accent header */}
+      <div className="bg-gradient-to-br from-green-800 to-green-950 px-8 pt-8 pb-6 text-center text-white">
+        <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-green-100 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+          </span>
+          Besplatna konsultacija
         </div>
+        <h2 className="text-2xl font-bold mb-1.5">
+          Započni svoju transformaciju
+        </h2>
+        <p className="text-green-200 text-sm">
+          Javi se i zajedno pravimo plan za tvoje ciljeve
+        </p>
       </div>
 
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        
-        @keyframes scale-in {
-          from {
-            opacity: 0;
-            transform: scale(0.9) translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 0.3s ease-out;
-        }
-        
-        .animate-scale-in {
-          animation: scale-in 0.4s ease-out;
-        }
-      `}</style>
+      {/* Content */}
+      <div className="p-6">
+        {/* Trust signals */}
+        <div className="flex items-center justify-center gap-4 mb-5 text-xs text-gray-500">
+          <span className="flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5 text-green-600" />
+            Odgovor za &lt;1h
+          </span>
+          <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+          <span className="flex items-center gap-1">
+            <Star className="w-3.5 h-3.5 text-amber-500" />
+            50+ klijenata
+          </span>
+        </div>
+
+        {/* Primary CTA — WhatsApp */}
+        <button
+          onClick={handleWhatsApp}
+          className="w-full flex items-center gap-4 bg-[#25D366] hover:bg-[#20b858] text-white font-semibold py-4 px-5 rounded-2xl transition-all duration-200 hover:shadow-lg hover:shadow-green-200 group mb-3"
+        >
+          <div className="w-11 h-11 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
+            <MessageCircle size={22} />
+          </div>
+          <div className="flex-1 text-left">
+            <div className="text-base font-bold leading-tight">Piši na WhatsApp</div>
+            <div className="text-xs text-white/80 mt-0.5">Najbrži način — poruka je već spremna</div>
+          </div>
+          <div className="text-xl opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all">&rarr;</div>
+        </button>
+
+        {/* Secondary CTAs row */}
+        <div className="grid grid-cols-2 gap-3 mb-5">
+          {/* Viber */}
+          <button
+            onClick={handleViber}
+            className="flex flex-col items-center gap-2 bg-gray-50 hover:bg-[#7360f2]/5 border border-gray-200 hover:border-[#7360f2]/30 text-gray-700 py-4 px-3 rounded-2xl transition-all duration-200 group"
+          >
+            <div className="w-10 h-10 bg-[#7360f2] rounded-xl flex items-center justify-center text-white">
+              <MessageCircle size={20} />
+            </div>
+            <div className="text-sm font-semibold text-[#7360f2]">Viber</div>
+          </button>
+
+          {/* Phone — mobile */}
+          <div className="block md:hidden">
+            <button
+              onClick={handlePhone}
+              className="w-full flex flex-col items-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 hover:border-gray-300 text-gray-700 py-4 px-3 rounded-2xl transition-all duration-200 group"
+            >
+              <div className="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center text-white">
+                <Phone size={20} />
+              </div>
+              <div className="text-sm font-semibold">Pozovi</div>
+            </button>
+          </div>
+
+          {/* Phone — desktop (display only) */}
+          <div className="hidden md:flex flex-col items-center gap-2 bg-gray-50 border border-gray-200 text-gray-700 py-4 px-3 rounded-2xl cursor-default" onClick={(e) => e.stopPropagation()}>
+            <div className="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center text-white">
+              <Phone size={20} />
+            </div>
+            <div className="text-xs font-semibold text-gray-900">+381 66 244 454</div>
+          </div>
+        </div>
+
+        {/* Social proof nudge */}
+        <div className="bg-green-50 border border-green-100 rounded-xl px-4 py-3 flex items-start gap-3">
+          <Image
+            src={Stefan}
+            alt="Stefan Tešić"
+            className="w-9 h-9 rounded-full object-cover shrink-0"
+          />
+          <div>
+            <p className="text-xs text-green-800 leading-relaxed">
+              <span className="font-semibold">&ldquo;Najbolja odluka koju sam doneo&rdquo;</span>
+              {' '}&mdash; rezultati vidljivi već posle 2 nedelje saradnje.
+            </p>
+            <p className="text-[11px] text-green-600 font-medium mt-1">Stefan Tešić</p>
+          </div>
+        </div>
+
+        {/* Availability */}
+        <p className="text-center text-[11px] text-gray-400 mt-4">
+          Radnim danima 08:00 &ndash; 17:00 &middot; Vikend po dogovoru
+        </p>
+      </div>
     </div>
   );
 }

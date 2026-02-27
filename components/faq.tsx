@@ -66,7 +66,7 @@ export function FAQ() {
             className="text-4xl md:text-5xl font-bold text-gray-900"
           >
             Imate pitanja?
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 pb-1">
               Imamo odgovore
             </span>
           </h2>
@@ -126,7 +126,7 @@ export function FAQ() {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <CallTotActionCard />
+        <CallTotActionCard onClose={() => setIsModalOpen(false)} />
       </Modal>
     </section>
   );
