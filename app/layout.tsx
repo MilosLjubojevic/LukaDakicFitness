@@ -366,7 +366,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
 
-        {/* ✅ Google Analytics */}
+        {/* ✅ Google Analytics & Google Ads */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-HR77784YX1"
@@ -378,6 +378,7 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-HR77784YX1');
+              gtag('config', 'AW-17719238680');
             `,
           }}
         />
