@@ -302,6 +302,24 @@ export default function RootLayout({
           }}
         />
 
+        {/* Google Ads Conversion Event Snippet */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function gtag_report_conversion(url) {
+                var callback = function () {
+                  if (typeof(url) != 'undefined') { window.location = url; }
+                };
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-17719238680/r1LqCPuP6YscEJjAmIFC',
+                  'event_callback': callback
+                });
+                return false;
+              }
+            `,
+          }}
+        />
+
         {/* FAQ Schema */}
         <script
           type="application/ld+json"

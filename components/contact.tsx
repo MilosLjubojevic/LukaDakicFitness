@@ -11,12 +11,26 @@ export function Contact() {
 
   const phoneNumber = "+38166244454";
 
-  const handleViber = () =>
+  const fireConversion = () => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "conversion", {
+        send_to: "AW-17719238680/r1LqCPuP6YscEJjAmIFC",
+      });
+    }
+  };
+
+  const handleViber = () => {
+    fireConversion();
     window.open(`viber://chat?number=${phoneNumber}`, "_blank");
-  const handleWhatsApp = () =>
+  };
+  const handleWhatsApp = () => {
+    fireConversion();
     window.open(`https://wa.me/${phoneNumber}`, "_blank");
-  const handleInstagram = () =>
+  };
+  const handleInstagram = () => {
+    fireConversion();
     window.open("https://www.instagram.com/luka__dakic", "_blank");
+  };
 
   const contactInfo = [
     {
