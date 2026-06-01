@@ -1,2 +1,2 @@
 # LukaDakicFitness
-A website for private gym
+A website for a presonal trainer
